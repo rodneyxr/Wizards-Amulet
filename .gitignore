@@ -2,7 +2,6 @@ syntax: glob
 Library
 obj
 Temp
-TempleRun_Data
 *.csproj
 *.sln
 *.userprefs
