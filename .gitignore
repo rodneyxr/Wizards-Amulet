@@ -1,0 +1,14 @@
+syntax: glob
+Library
+obj
+Temp
+TempleRun_Data
+*.csproj
+*.sln
+*.userprefs
+*.orig
+*.orig.meta
+.DS_Store
+thumbs.db
+*.unityproj
+*.pidb
