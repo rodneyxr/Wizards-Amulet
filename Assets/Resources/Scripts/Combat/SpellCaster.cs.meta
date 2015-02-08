@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 8252b9a0049fb954aa676e2e205176d0
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - fireBall: {instanceID: 0}
+  - iceBlitz: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
