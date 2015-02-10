@@ -6,7 +6,7 @@ public class Spell : Projectile {
     private SpellType spellType;
     private float baseDamage;
 
-    void Start() {
+    new void Start() {
         base.Start();
         BoxCollider collider = GetComponentInChildren<BoxCollider>();
         collider.transform.position = new Vector3(collider.transform.position.x, (collider.bounds.size.y / 2) + .01f, collider.transform.position.z);
@@ -23,7 +23,7 @@ public class Spell : Projectile {
     override public void hit(Collider other) {
         print("hit: " + other.name);
         switch (other.tag) {
-            case "Unwalkable":
+            case "NonWalkable":
                 Destroy(this.gameObject);
                 break;
 

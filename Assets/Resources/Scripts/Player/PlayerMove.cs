@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 
-    public float gridSize = 1f; // size of each tile in the grid
     public float moveSpeed = 10f; // how fast the player moves
 
     private CharacterController cc; // character controller attached to the player
@@ -54,10 +53,10 @@ public class PlayerMove : MonoBehaviour {
 
         // calcultate destination position to move to
         if (gridOrientation == Orientation.Horizontal) {
-            endPosition = new Vector3(startPosition.x + System.Math.Sign(input.x) * gridSize, startPosition.y, startPosition.z + System.Math.Sign(input.y) * gridSize); // calculate the destination tile
+            endPosition = new Vector3(startPosition.x + System.Math.Sign(input.x) * GameManager.TileSize, startPosition.y, startPosition.z + System.Math.Sign(input.y) * GameManager.TileSize); // calculate the destination tile
             endPosition = Quaternion.Euler(0, playerLook.Yaw, 0) * (endPosition - startPosition) + startPosition; // rotate the move relative to which way the character is facing
         } else {
-            endPosition = new Vector3(startPosition.x + System.Math.Sign(input.x) * gridSize, startPosition.y + System.Math.Sign(input.y) * gridSize, startPosition.z);
+            endPosition = new Vector3(startPosition.x + System.Math.Sign(input.x) * GameManager.TileSize, startPosition.y + System.Math.Sign(input.y) * GameManager.TileSize, startPosition.z);
         }
 
         // check if the destination is valid
@@ -65,17 +64,17 @@ public class PlayerMove : MonoBehaviour {
         RaycastHit hit;
         Vector3 moveDirection = (endPosition - startPosition).normalized;
         Debug.DrawRay(startPosition, moveDirection, Color.red, 1);
-        if (Physics.Raycast(startPosition, moveDirection, out hit, gridSize)) {
-            if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable") {
-                canMove = false;
-            }
+        if (Physics.Raycast(startPosition, moveDirection, out hit, GameManager.TileSize + (GameManager.TileSize / 2 - .01f))) {
+            //if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable") {
+            canMove = false;
+            //}
         }
 
         // smoothly move to new position
         if (canMove) {
             float t = 0f; // lerp speed
             while (t < 1f) {
-                t += Time.deltaTime * (moveSpeed / gridSize); // calculate the time for lerp
+                t += Time.deltaTime * (moveSpeed / GameManager.TileSize); // calculate the time for lerp
                 cc.transform.position = Vector3.Lerp(startPosition, endPosition, t); // smooth player move
                 yield return null;
             }

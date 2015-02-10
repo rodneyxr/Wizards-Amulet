@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameScript : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
-    public static float tileSize = 5f;
     public GameObject debugLight;
+
+    private const float tileSize = 5f;
+    public static float TileSize { get { return tileSize; } }
 
     private bool playerTurn;
 

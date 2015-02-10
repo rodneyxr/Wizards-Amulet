@@ -27,7 +27,7 @@ public class SpellCaster : MonoBehaviour {
                 break;
         }
 
-        Vector3 offset = rotation * Vector3.forward * GameScript.tileSize / 2f;
+        Vector3 offset = rotation * Vector3.forward * GameManager.TileSize / 2f;
         var o = Object.Instantiate(prefab, position + offset, rotation) as GameObject;
         Spell spell = o.GetComponent<Spell>();
         spell.Initialize(spellType);

@@ -12,7 +12,7 @@ public abstract class Projectile : MonoBehaviour {
     }
 
     void Update() {
-        if (Vector3.Distance(startPosition, transform.position) > range * GameScript.tileSize) {
+        if (Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize) {
             Destroy(this.gameObject);
         }
 
