@@ -32,6 +32,13 @@ public class Spell : Projectile {
                 if (spellType == SpellType.Damage)
                     damage();
                 break;
+
+			case "Ice":
+				if(spellType == SpellType.Damage){
+					other.gameObject.GetComponent <IceMelt>().melting = true;
+				}
+				Destroy(this.gameObject);
+				break;
         }
 
     }

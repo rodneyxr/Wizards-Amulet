@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour {
         Vector3 moveDirection = (endPosition - startPosition).normalized;
         Debug.DrawRay(startPosition, moveDirection, Color.red, 1);
         if (Physics.Raycast(startPosition, moveDirection, out hit, gridSize)) {
-            if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable") {
+            if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable" || hit.collider.tag == "Ice") {
                 canMove = false;
             }
         }
