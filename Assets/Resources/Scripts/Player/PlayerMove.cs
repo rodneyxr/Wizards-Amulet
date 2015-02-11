@@ -68,6 +68,7 @@ public class PlayerMove : MonoBehaviour {
             //if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable") {
             canMove = false;
             //}
+
         }
 
         // smoothly move to new position

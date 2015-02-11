@@ -40,7 +40,7 @@ public enum SpellBook {
 }
 
 public enum SpellType {
-    Damage,
+	Damage,
     Healing,
     Special
 }
