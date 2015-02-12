@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
+	
 
     // Use this for initialization
     void Start() {
