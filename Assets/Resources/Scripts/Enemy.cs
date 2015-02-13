@@ -3,16 +3,33 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-    // Use this for initialization
+    private bool enemyTurn;
+
     void Start() {
 
     }
 
-    // Update is called once per frame
     void Update() {
-
+        if (enemyTurn) {
+            AIMove();
+        }
     }
 
     void OnTriggerEnter(Collider other) {
+
+    }
+
+    public void AIMove() {
+        print("Enemy moved.");
+        EnemyTurn = false;
+    }
+
+    public void YourTurn() {
+        EnemyTurn = true;
+    }
+
+    public bool EnemyTurn {
+        get { return enemyTurn; }
+        set { enemyTurn = value; }
     }
 }
