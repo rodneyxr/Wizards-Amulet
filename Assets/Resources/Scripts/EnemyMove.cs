@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMove : MonoBehaviour {
+public class EnemyMove : MonoBehaviour {
 
     public float moveSpeed = 10f; // how fast the player moves
 
-    private CharacterController cc; // character controller attached to the player
+    //private CharacterController cc; // character controller attached to the player
+    Rigidbody rigidBody; // rigidbody of the enemy
     private PlayerLook playerLook; // to see where the player is looking
-    private Player player; // the main player class
 
     private enum Orientation {
         Horizontal, // navigate the ground
@@ -22,28 +22,28 @@ public class PlayerMove : MonoBehaviour {
     private Vector3 endPosition; // destination position
 
     public void Start() {
-        cc = GetComponent<CharacterController>(); // grab the character controller
+        //cc = GetComponent<CharacterController>(); // grab the character controller
+        rigidBody = GetComponent<Rigidbody>();
         playerLook = GetComponentInChildren<PlayerLook>();
-        player = GetComponentInChildren<Player>();
     }
 
     public void Update() {
-        if (!isMoving) {
-            // get the player input
-            input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //if (!isMoving) {
+        //    // get the player input
+        //    input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-            // prevent moving diagonally
-            if (Mathf.Abs(input.x) > Mathf.Abs(input.y)) {
-                input.y = 0;
-            } else {
-                input.x = 0;
-            }
+        //    // prevent moving diagonally
+        //    if (Mathf.Abs(input.x) > Mathf.Abs(input.y)) {
+        //        input.y = 0;
+        //    } else {
+        //        input.x = 0;
+        //    }
 
-            // initiate the move
-            if (input != Vector2.zero && !isMoving) {
-                StartCoroutine(move(cc.transform));
-            }
-        }
+        //    // initiate the move
+        //    if (input != Vector2.zero && !isMoving) {
+        //        StartCoroutine(move(rigidBody.transform));
+        //    }
+        //}
     }
 
     public IEnumerator move(Transform transform) {
@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour {
         isMoving = true;
 
         // save the current position
-        startPosition = cc.transform.position;
+        startPosition = rigidBody.transform.position;
 
         // calcultate destination position to move to
         if (gridOrientation == Orientation.Horizontal) {
@@ -78,10 +78,9 @@ public class PlayerMove : MonoBehaviour {
             float t = 0f; // lerp speed
             while (t < 1f) {
                 t += Time.deltaTime * (moveSpeed / GameManager.TileSize); // calculate the time for lerp
-                cc.transform.position = Vector3.Lerp(startPosition, endPosition, t); // smooth player move
+                rigidBody.transform.position = Vector3.Lerp(startPosition, endPosition, t); // smooth player move
                 yield return null;
             }
-            player.PlayerMoved();
         }
 
         // finished moving

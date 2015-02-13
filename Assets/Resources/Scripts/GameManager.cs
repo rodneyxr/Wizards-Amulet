@@ -4,20 +4,27 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     public GameObject debugLight;
+    public Enemy[] enemies;
+    public Player player;
 
     private const float tileSize = 5f;
     public static float TileSize { get { return tileSize; } }
 
-    private bool playerTurn;
-
     void Start() {
         debugLight.SetActive(false); // Debug light
-        playerTurn = true;
+        player.YourTurn();
     }
 
     void Update() {
-        if (!playerTurn) {
-            print("AI move.");
+        if (!player.PlayerTurn) {
+            NotifyAllEnemies();
+            player.YourTurn();
+        }
+    }
+
+    void NotifyAllEnemies() {
+        foreach (Enemy e in enemies) {
+            e.YourTurn();
         }
     }
 }
