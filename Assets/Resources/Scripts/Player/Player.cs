@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     private PlayerLook playerLook;
     private PlayerMove playerMove;
     private SpellBook selectedSpell;
+    private bool playerTurn;
 
     void Start() {
         //cc = GetComponent<CharacterController>();
@@ -24,6 +25,23 @@ public class Player : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning) {
             SpellCaster.castSpell(selectedSpell, playerLook.PlayerCamera.transform.position, Quaternion.Euler(0f, playerLook.Yaw, 0f));
+            PlayerMoved();
         }
     }
+
+    public void PlayerMoved() {
+        print("Player moved.");
+        PlayerTurn = false;
+    }
+
+    public void YourTurn() {
+        PlayerTurn = true;
+    }
+
+    public bool PlayerTurn {
+        get { return playerTurn; }
+        set { playerTurn = value; }
+    }
+
+
 }
