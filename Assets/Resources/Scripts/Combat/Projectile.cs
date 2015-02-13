@@ -5,14 +5,17 @@ public abstract class Projectile : MonoBehaviour {
 
     public float range = 10.0f; // how many tiles the projectile will travel before dying
     public float speed = 10.0f; // how fast the projectile will travel
-    private Vector3 startPosition;
+    protected Vector3 startPosition;
 
     public void Start() {
         startPosition = transform.position;
     }
 
     void Update() {
-        if (Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize) {
+		if (this.gameObject.tag == "Fire" && Vector3.Distance (startPosition, transform.position) > range * GameManager.TileSize * .3) {
+			this.gameObject.GetComponent<ParticleSystem>().emissionRate /= 25; 
+		}
+		if (Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize) {
             Destroy(this.gameObject);
         }
 

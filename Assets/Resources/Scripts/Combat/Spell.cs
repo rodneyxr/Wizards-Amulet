@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Spell : Projectile {
-
+	public GameObject explosion;
     private SpellType spellType;
     private float baseDamage;
 
@@ -22,7 +22,8 @@ public class Spell : Projectile {
 
     override public void hit(Collider other) {
         print("hit: " + other.name);
-        switch (other.tag) {
+		Instantiate(explosion, transform.position, transform.rotation);
+		switch (other.tag) {
             case "NonWalkable":
                 Destroy(this.gameObject);
                 break;
