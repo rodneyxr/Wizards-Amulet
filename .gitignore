@@ -11,3 +11,5 @@ Temp
 thumbs.db
 *.unityproj
 *.pidb
+*.unity
+*.v12.suo
