@@ -23,6 +23,9 @@ public abstract class Projectile : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == 2) {
+            return;
+        }
         hit(other);
     }
 
