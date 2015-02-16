@@ -4,7 +4,7 @@ using System.Collections;
 public class Portcullis : MonoBehaviour {
 	public bool open;
 	public bool state;
-	public float speed;
+	public float speed = 0.1f;
 	private float baseHeight;
 	// Use this for initialization
 	void Start () {
