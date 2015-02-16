@@ -14,12 +14,12 @@ public class SpellCaster : MonoBehaviour {
 
     public static void castSpell(SpellBook spellBook, Vector3 position, Quaternion rotation) {
         Object prefab = instance.fireBall;
-        SpellType spellType = SpellType.Damage;
+        SpellType spellType = SpellType.None;
 
         switch (spellBook) {
             case SpellBook.FireBall:
                 prefab = instance.fireBall;
-                spellType = SpellType.Damage;
+				spellType = SpellType.FireBall;
                 break;
             case SpellBook.IceBlitz:
                 prefab = instance.iceBlitz;
@@ -29,8 +29,7 @@ public class SpellCaster : MonoBehaviour {
 
         Vector3 offset = rotation * Vector3.forward * GameManager.TileSize / 2f;
         var o = Object.Instantiate(prefab, position + offset, rotation) as GameObject;
-        Spell spell = o.GetComponent<Spell>();
-        spell.Initialize(spellType);
+       // Spell spell = o.GetComponent<Spell>();
     }
 
 }
@@ -42,5 +41,7 @@ public enum SpellBook {
 public enum SpellType {
 	Damage,
     Healing,
-    Special
+    Special,
+	FireBall,
+	None
 }

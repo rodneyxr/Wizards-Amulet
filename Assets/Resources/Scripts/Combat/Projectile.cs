@@ -11,7 +11,8 @@ public abstract class Projectile : MonoBehaviour {
         startPosition = transform.position;
     }
 
-    void Update() {
+    public void Update() {
+		print ("going through here\n\n\npotato");
 		if (this.gameObject.tag == "Fire" && Vector3.Distance (startPosition, transform.position) > range * GameManager.TileSize * .3) {
 			this.gameObject.GetComponent<ParticleSystem>().emissionRate /= 25; 
 		}
