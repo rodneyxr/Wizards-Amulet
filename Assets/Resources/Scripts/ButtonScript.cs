@@ -13,7 +13,7 @@ public class ButtonScript : MonoBehaviour {
 	
 	}
 
-	void Interact(){
+	public void Interact(){
 		Portcullis controller = thing.GetComponent<Portcullis> ();
 		if (controller.open)
 			controller.open = false;
