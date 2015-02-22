@@ -8,11 +8,13 @@ public class Player : MonoBehaviour {
     private PlayerMove playerMove;
     private SpellBook selectedSpell;
     private bool playerTurn;
+    private Interaction interaction;
 
     void Start() {
         //cc = GetComponent<CharacterController>();
         playerLook = GetComponent<PlayerLook>();
         playerMove = GetComponent<PlayerMove>();
+        interaction = GetComponentInChildren<Interaction>();
         selectedSpell = SpellBook.FireBall;
     }
 
@@ -26,6 +28,10 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning) {
             SpellCaster.castSpell(selectedSpell, playerLook.PlayerCamera.transform.position, Quaternion.Euler(0f, playerLook.Yaw, 0f));
             PlayerMoved();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+            interaction.Interact();
         }
     }
 
