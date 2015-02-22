@@ -12,10 +12,10 @@ public abstract class Projectile : MonoBehaviour {
     }
 
     void Update() {
-		if (this.gameObject.tag == "Fire" && Vector3.Distance (startPosition, transform.position) > range * GameManager.TileSize * .3) {
-			this.gameObject.GetComponent<ParticleSystem>().emissionRate /= 25; 
-		}
-		if (Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize) {
+        if (this.gameObject.tag == "Fire" && Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize * .3) {
+            this.gameObject.GetComponent<ParticleSystem>().emissionRate /= 25;
+        }
+        if (Vector3.Distance(startPosition, transform.position) > range * GameManager.TileSize) {
             Destroy(this.gameObject);
         }
 

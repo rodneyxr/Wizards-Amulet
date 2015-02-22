@@ -12,4 +12,4 @@ thumbs.db
 *.unityproj
 *.pidb
 *.unity
-gamedev-proj-csharp.v12.suo
+*.suo

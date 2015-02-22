@@ -4,7 +4,7 @@ using System.Collections;
 public class Fade : Spell {
 	public int FadeRate = 0;
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 	
 	}
 	
