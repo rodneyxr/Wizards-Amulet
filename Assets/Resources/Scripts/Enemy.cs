@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void AIMove() {
-        print("Enemy moved.");
+        //print("Enemy moved.");
         EnemyTurn = false;
     }
 
