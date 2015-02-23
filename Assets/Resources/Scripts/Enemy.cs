@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Character {
 
     private bool enemyTurn;
+    private CharacterMove characterMove;
 
     void Start() {
-
+        characterMove = GetComponent<CharacterMove>();
     }
 
     void Update() {
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour {
 
     public void AIMove() {
         //print("Enemy moved.");
+        //characterMove.Move();
         EnemyTurn = false;
     }
 
