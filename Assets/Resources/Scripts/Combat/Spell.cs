@@ -17,11 +17,11 @@ public class Spell : Projectile {
     }
 
     public void damage() {
-        print("TODO: Cause damage to the enemy!");
+        //print("TODO: Cause damage to the enemy!");
     }
 
     override public void hit(Collider other) {
-        print("hit: " + other.name);
+        //print("hit: " + other.name);
 		Instantiate(explosion, transform.position, transform.rotation);
 		switch (other.tag) {
             case "NonWalkable":
