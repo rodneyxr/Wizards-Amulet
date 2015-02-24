@@ -4,8 +4,11 @@ using System.Collections;
 public class IceMelt : MonoBehaviour {
 	public bool melting;
 	float oneTenthYScale;
+	public GameObject liquid;
+	Vector3 startPos;
 	// Use this for initialization
 	void Start () {
+		startPos = new Vector3(transform.position.x, 0.1f, transform.position.z);
 		melting = false;
 		oneTenthYScale = transform.localScale.y/10.0f;
 	}
@@ -17,6 +20,7 @@ public class IceMelt : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x, transform.position.y - oneTenthYScale/2, transform.position.z);
 		}
 		if (transform.localScale.y <= 0.0f) {
+			Instantiate(liquid, startPos, transform.rotation);
 			Destroy (gameObject);
 		}
 	}
