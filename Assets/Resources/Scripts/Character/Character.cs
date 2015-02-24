@@ -5,7 +5,7 @@ using System.Collections;
 /**
  * A generic 'character' abstract class
 */
-public abstract class Character : MonoBehaviour {
+public abstract class Character : MonoBehaviour, ICharacter {
 
     //Character Health and Mana
     private int health;
@@ -40,10 +40,22 @@ public abstract class Character : MonoBehaviour {
         set { attackDamage = value; }
     }
 
-    public abstract void increaseHealth(int healthIncreaseAmount);
-    public abstract void decreaseHealth(int healthDecreaseAmount);
-    public abstract void decreaseMana(int manaDecreaseAmount);
-    public abstract void increaseMana(int manaIncreaseAmount);
+    public void increaseHealth(int healthIncreaseAmount) {
+        Health += healthIncreaseAmount;
+    }
+
+    public void decreaseHealth(int healthDecreaseAmount) {
+        Health -= healthDecreaseAmount;
+    }
+
+    public void decreaseMana(int manaDecreaseAmount) {
+        Mana -= manaDecreaseAmount;
+    }
+
+    public void increaseMana(int manaIncreaseAmount) {
+        Mana += manaIncreaseAmount;
+    }
+
     // Use this for initialization
     void Start() {
 
