@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonScript : MonoBehaviour {
+public class ButtonScript : MonoBehaviour,IInteractable  {
 	public GameObject thing;
 	public bool blocked = false;
 	public string blockerName;
