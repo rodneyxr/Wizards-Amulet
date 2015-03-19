@@ -5,6 +5,8 @@ public class Enemy : Character {
 
     private bool enemyTurn;
     private CharacterMove characterMove;
+    private Transform target;
+    public enum State { Idle, Chase };
 
     void Start() {
         characterMove = GetComponent<CharacterMove>();
@@ -20,9 +22,11 @@ public class Enemy : Character {
 
     }
 
+
+
     public void AIMove() {
         //print("Enemy moved.");
-        //characterMove.Move();
+        characterMove.Move(Direction.Forward);
         EnemyTurn = false;
     }
 

@@ -47,14 +47,23 @@ public class CharacterMove : MonoBehaviour {
     //}
 
     public void Move(Direction direction) {
+        input = new Vector2();
         switch (direction) {
             case Direction.Forward:
+                input.y = 1;
+                //print("Move Forward");
                 break;
             case Direction.Back:
+                input.y = -1;
+                //print("Move Back");
                 break;
             case Direction.Left:
+                input.x = -1;
+                //print("Move Left");
                 break;
             case Direction.Right:
+                input.x = 1;
+                //print("Move Right");
                 break;
         }
 
