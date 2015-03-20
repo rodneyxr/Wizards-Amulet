@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CharacterMove : MonoBehaviour {
 
+    // Constants
+    private const float lerpSpeed = 7f;
     public float moveSpeed = 10f; // how fast the player moves
 
     private CharacterController cc; // character controller attached to the player
@@ -20,6 +22,12 @@ public class CharacterMove : MonoBehaviour {
     private bool isMoving = false; // true if the player is currently moving
     private Vector3 startPosition; // position at start of a move
     private Vector3 endPosition; // destination position
+
+    // Turning
+    private bool isTurning = false;
+    private float destYaw = 0f;
+    private int facing = 0;
+    private float[] direction = new float[] { 0f, 90f, 180f, 270f };
 
     public void Start() {
         cc = GetComponent<CharacterController>(); // grab the character controller
@@ -51,19 +59,15 @@ public class CharacterMove : MonoBehaviour {
         switch (direction) {
             case Direction.Forward:
                 input.y = 1;
-                //print("Move Forward");
                 break;
             case Direction.Back:
                 input.y = -1;
-                //print("Move Back");
                 break;
             case Direction.Left:
                 input.x = -1;
-                //print("Move Left");
                 break;
             case Direction.Right:
                 input.x = 1;
-                //print("Move Right");
                 break;
         }
 
@@ -113,6 +117,31 @@ public class CharacterMove : MonoBehaviour {
         // finished moving
         isMoving = false;
         yield return 0;
+    }
+
+    public void Face(int turn) {
+        StartCoroutine(FaceRoutine(turn));
+    }
+
+    IEnumerator FaceRoutine(int turn) {
+        isTurning = true;
+        facing += turn;
+        if (facing == -1)
+            facing = 3;
+        else if (facing == 4)
+            facing = 0;
+        print(facing);
+        destYaw = direction[facing];
+
+        while (isTurning) {
+            if (Mathf.Abs(destYaw - transform.rotation.eulerAngles.y) < 0.1f) {
+                cc.transform.rotation = Quaternion.Euler(0f, destYaw, 0f);
+                isTurning = false;
+            } else
+                cc.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, destYaw, 0f), lerpSpeed * Time.deltaTime);
+            yield return 0;
+        }
+        yield return null;
     }
 
     public bool IsMoving {

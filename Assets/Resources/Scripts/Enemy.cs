@@ -7,14 +7,27 @@ public class Enemy : Character {
     private CharacterMove characterMove;
     private Transform target;
     public enum State { Idle, Chase };
+    private State state;
 
     void Start() {
         characterMove = GetComponent<CharacterMove>();
+        state = State.Idle;
     }
 
     void Update() {
         if (enemyTurn) {
-            AIMove();
+            switch (state) {
+                case State.Idle:
+                    IdleState();
+                    break;
+                case State.Chase:
+                    ChaseState();
+                    break;
+
+                default:
+                    break;
+            }
+            EndTurn();
         }
     }
 
@@ -22,15 +35,20 @@ public class Enemy : Character {
 
     }
 
+    private void IdleState() {
+        characterMove.Face(-1);
+        print("face left");
+    }
 
+    private void ChaseState() {
 
-    public void AIMove() {
-        //print("Enemy moved.");
-        characterMove.Move(Direction.Forward);
+    }
+
+    private void EndTurn() {
         EnemyTurn = false;
     }
 
-    public void YourTurn() {
+    public void StartTurn() {
         EnemyTurn = true;
     }
 

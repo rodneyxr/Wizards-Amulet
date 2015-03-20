@@ -36,7 +36,6 @@ public class Player : MonoBehaviour {
     }
 
     public void PlayerMoved() {
-        //print("Player moved.");
         PlayerTurn = false;
     }
 

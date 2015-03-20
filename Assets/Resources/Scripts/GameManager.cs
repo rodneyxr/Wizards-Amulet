@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 
     void NotifyAllEnemies() {
         foreach (Enemy e in enemies) {
-            e.YourTurn();
+            e.StartTurn();
         }
     }
 }
