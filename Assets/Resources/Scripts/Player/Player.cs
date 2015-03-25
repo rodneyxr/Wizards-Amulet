@@ -63,4 +63,19 @@ public class Player : MonoBehaviour {
 		set { learnIceBlitz = value; }
 	}
 
+	public void learnSpell(string spellname){
+		if (spellname.Equals ("fireball")) {
+			LearnFireBall = true;
+			selectedSpell = SpellBook.FireBall;
+		}
+		if (spellname.Equals ("iceblitz")) {
+			LearnFireBall = true;
+			selectedSpell = SpellBook.IceBlitz;
+		}
+	}
+
+
+
+
+
 }
