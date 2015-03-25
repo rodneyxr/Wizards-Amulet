@@ -40,19 +40,19 @@ public abstract class Character : MonoBehaviour, ICharacter {
         set { attackDamage = value; }
     }
 
-    public void increaseHealth(int healthIncreaseAmount) {
+    public virtual void increaseHealth(int healthIncreaseAmount) {
         Health += healthIncreaseAmount;
     }
 
-    public void decreaseHealth(int healthDecreaseAmount) {
+    public virtual void decreaseHealth(int healthDecreaseAmount) {
         Health -= healthDecreaseAmount;
     }
 
-    public void decreaseMana(int manaDecreaseAmount) {
+    public virtual void decreaseMana(int manaDecreaseAmount) {
         Mana -= manaDecreaseAmount;
     }
 
-    public void increaseMana(int manaIncreaseAmount) {
+    public virtual void increaseMana(int manaIncreaseAmount) {
         Mana += manaIncreaseAmount;
     }
 

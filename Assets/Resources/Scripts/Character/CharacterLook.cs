@@ -19,14 +19,12 @@ public class CharacterLook : MonoBehaviour {
         cc = GetComponent<CharacterController>(); // get the character controller on the player
     }
 
-    //void Update() {
-    //    // rotation
-    //    if (Input.GetKeyDown(KeyCode.Q)) {
-    //        Turn(-1);
-    //    } else if (Input.GetKeyDown(KeyCode.E)) {
-    //        Turn(1);
-    //    }
-    //}
+    public void TurnRandom() {
+        isTurning = true;
+        facing = Random.Range(0, 5);
+        print(facing);
+        destYaw = direction[facing];
+    }
 
     public void TurnLeft() {
         Turn(-1);

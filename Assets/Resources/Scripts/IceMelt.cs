@@ -20,7 +20,7 @@ public class IceMelt : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x, transform.position.y - oneTenthYScale/2, transform.position.z);
 		}
 		if (transform.localScale.y <= 0.0f) {
-			Instantiate(liquid, startPos, transform.rotation);
+			//Instantiate(liquid, startPos, transform.rotation); // removed due to preformance issues
 			Destroy (gameObject);
 		}
 	}

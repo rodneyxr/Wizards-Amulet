@@ -29,6 +29,9 @@ public class CharacterMove : MonoBehaviour {
     private int facing = 0;
     private float[] direction = new float[] { 0f, 90f, 180f, 270f };
 
+    public Enemy.FinishedMoving finishedMoving;
+    private Action lastAction;
+
     public void Start() {
         cc = GetComponent<CharacterController>(); // grab the character controller
         characterLook = GetComponentInChildren<CharacterLook>();
@@ -70,10 +73,14 @@ public class CharacterMove : MonoBehaviour {
                 input.x = 1;
                 break;
         }
+        Move();
+    }
 
+    private void Move() {
         if (!isMoving) {
             StartCoroutine(move(cc.transform));
         }
+        lastAction = Action.Move;
     }
 
     private IEnumerator move(Transform transform) {
@@ -116,27 +123,42 @@ public class CharacterMove : MonoBehaviour {
 
         // finished moving
         isMoving = false;
+        if (lastAction.Equals(Action.Move)) finishedMoving();
         yield return 0;
     }
 
     public void Face(int turn) {
-        StartCoroutine(FaceRoutine(turn));
-    }
-
-    IEnumerator FaceRoutine(int turn) {
-        isTurning = true;
+        //isTurning = true;
         facing += turn;
         if (facing == -1)
             facing = 3;
         else if (facing == 4)
             facing = 0;
-        print(facing);
         destYaw = direction[facing];
+        //StartCoroutine(FaceRoutine());
+        Face();
+    }
 
+    public void FaceRandom() {
+        //isTurning = true;
+        facing = Random.Range(0, 4);
+        destYaw = direction[facing];
+        Face();
+        //StartCoroutine(FaceRoutine());
+    }
+
+    private void Face() {
+        isTurning = true;
+        StartCoroutine(FaceRoutine());
+        lastAction = Action.Face;
+    }
+
+    IEnumerator FaceRoutine() {
         while (isTurning) {
             if (Mathf.Abs(destYaw - transform.rotation.eulerAngles.y) < 0.1f) {
                 cc.transform.rotation = Quaternion.Euler(0f, destYaw, 0f);
                 isTurning = false;
+                if (lastAction.Equals(Action.Face)) finishedMoving();
             } else
                 cc.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, destYaw, 0f), lerpSpeed * Time.deltaTime);
             yield return 0;
@@ -148,4 +170,11 @@ public class CharacterMove : MonoBehaviour {
         get { return isMoving; }
     }
 
+    public bool IsTurning {
+        get { return isTurning; }
+    }
+
+    private enum Action {
+        Move, Face
+    }
 }
