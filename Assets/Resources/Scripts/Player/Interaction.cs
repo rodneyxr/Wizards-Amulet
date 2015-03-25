@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (other.tag != "Interactable") return;
+		print ("on enter");
         actors.Add(other.gameObject);
 
     }
@@ -17,8 +18,9 @@ public class Interaction : MonoBehaviour {
     }
 
     public void Interact() {
+		print ("interact beginning");
         if (actors.Count == 0) return;
-        ButtonScript button = (actors[0] as GameObject).GetComponent<ButtonScript>();
-        button.Interact();
+        IInteractable actor = (actors[0] as GameObject).GetComponent<IInteractable>();
+		actor.Interact();
     }
 }
