@@ -19,6 +19,7 @@ public class PlayerStats : Character {
         //Give character base stats via public variables
         Health = playerHealth;
         Mana = playerMana;
+		updateTextReference ();
         AttackDamage = playerAttackDamage;
         MoveSpeed = playerMoveSpeed;
     }
@@ -28,4 +29,9 @@ public class PlayerStats : Character {
         PlayerHealthText.text = "Health : " + Health;
         PlayerManaText.text = "Mana : " + Mana;
     }
+
+	void updateTextReference(){
+		PlayerHealthText = GameObject.Find ("Health").GetComponent<Text>();
+		PlayerManaText = GameObject.Find ("Mana").GetComponent<Text>();
+	}
 }

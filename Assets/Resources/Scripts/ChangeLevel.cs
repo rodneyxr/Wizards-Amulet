@@ -18,7 +18,7 @@ public class ChangeLevel : MonoBehaviour {
 		print ("test");
 		if(other.tag.Equals("Player")){
 			StartLevel s = GameObject.Find("_Main").GetComponent<StartLevel>();
-			s.StartNewLevel(level, direction);
+			s.newLevel(level, direction);
 		}
 	}
 }
