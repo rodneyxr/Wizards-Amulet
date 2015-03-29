@@ -14,6 +14,9 @@ public class PlayerStats : Character {
     public Text PlayerHealthText;
     public Text PlayerManaText;
 
+	//Timer vars
+	private float manaRegenTimer;
+
     // Use this for initialization
     void Start() {
         //Give character base stats via public variables
@@ -21,11 +24,26 @@ public class PlayerStats : Character {
         Mana = playerMana;
         AttackDamage = playerAttackDamage;
         MoveSpeed = playerMoveSpeed;
+		manaRegenTimer = 0;
     }
 
     // Update is called once per frame
     void Update() {
-        PlayerHealthText.text = "Health : " + Health;
-        PlayerManaText.text = "Mana : " + Mana;
+		regenMana ();
+		syncUI ();
     }
+
+	void regenMana(){
+		if (Mana < 100) {
+			manaRegenTimer += Time.deltaTime;
+			if (manaRegenTimer >= 3) {
+					increaseMana (5);
+					manaRegenTimer = 0;
+			}
+		}
+	}
+	void syncUI(){
+		PlayerHealthText.text = "Health : " + Health;
+		PlayerManaText.text = "Mana : " + Mana;
+	}
 }
