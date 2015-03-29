@@ -3,8 +3,8 @@ guid: 8252b9a0049fb954aa676e2e205176d0
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - fireBall: {instanceID: 0}
-  - iceBlitz: {instanceID: 0}
+  - fireBall: {fileID: 108688, guid: 61353a4b828647246984ccb0439e8f05, type: 2}
+  - iceBlitz: {fileID: 180200, guid: 18a675857ea40b943b1ef83f57439af2, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
