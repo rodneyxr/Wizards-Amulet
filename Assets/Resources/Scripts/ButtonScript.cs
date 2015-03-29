@@ -27,10 +27,19 @@ public class ButtonScript : MonoBehaviour {
 			blocked = true;
 
 		Portcullis controller = thing.GetComponent<Portcullis> ();
-		if (controller.open && !blocked)
+		if (controller.open && !blocked && !controller.moving) {
 			controller.open = false;
-		else if (!blocked)
+			controller.moving = true;
+		} else if (!blocked && !controller.moving) {
 			controller.open = true;
+			controller.moving = true;
+		} else if (!controller.open && !blocked && controller.moving) {
+			controller.open = true;
+			controller.state = !controller.state;
+		} else if (controller.open && !blocked && controller.moving) {
+			controller.open = false;
+			controller.state = !controller.state;
+		}
 	}
 
 	/*void OnTriggerEnter(Collider other) {

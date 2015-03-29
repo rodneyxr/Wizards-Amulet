@@ -17,7 +17,7 @@ public class ChangeLevel : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		print ("test");
 		if(other.tag.Equals("Player")){
-			StartLevel s = GameObject.Find("_Main").GetComponent<StartLevel>();
+			StartLevel s = GameObject.Find("_Main(Clone)").GetComponent<StartLevel>();
 			s.newLevel(level, direction);
 		}
 	}

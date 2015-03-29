@@ -18,7 +18,9 @@ public class Interaction : MonoBehaviour {
 
     public void Interact() {
         if (actors.Count == 0) return;
-        ButtonScript button = (actors[0] as GameObject).GetComponent<ButtonScript>();
-        button.Interact();
+		for (int i = 0; i < actors.Count; i++) {
+			ButtonScript button = (actors [i] as GameObject).GetComponent<ButtonScript> ();
+			button.Interact ();
+		}
     }
 }

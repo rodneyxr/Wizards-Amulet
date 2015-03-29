@@ -40,6 +40,7 @@ public class StartLevel : MonoBehaviour {
 		                                        startTile.transform.position.z);
 		player.transform.rotation = startTile.transform.rotation;
 		player.GetComponent<PlayerStats> ();
+		gameObject.GetComponent<GameManager> ().setAllEnemies ();
 
 	}
 }
