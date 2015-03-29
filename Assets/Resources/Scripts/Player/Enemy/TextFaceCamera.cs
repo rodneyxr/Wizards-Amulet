@@ -6,7 +6,8 @@ public class TextFaceCamera : MonoBehaviour {
     private Transform cameraToLookAt;
 
     void Start() {
-        cameraToLookAt = Camera.main.transform;
+      //  cameraToLookAt = Camera.main.transform;
+		cameraToLookAt = GameObject.Find ("Player(Clone)").GetComponentInChildren<Camera>().transform;
     }
 
     

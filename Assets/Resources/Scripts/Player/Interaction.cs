@@ -20,7 +20,10 @@ public class Interaction : MonoBehaviour {
     public void Interact() {
 		print ("interact beginning");
         if (actors.Count == 0) return;
-        IInteractable actor = (actors[0] as GameObject).GetComponent<IInteractable>();
-		actor.Interact();
+
+		for (int i = 0; i < actors.Count; i++) {
+	        IInteractable actor = (actors[0] as GameObject).GetComponent<IInteractable>();
+			actor.Interact();
+		}
     }
 }

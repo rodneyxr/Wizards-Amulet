@@ -54,6 +54,9 @@ public abstract class Character : MonoBehaviour, ICharacter {
 
     public virtual void increaseMana(int manaIncreaseAmount) {
         Mana += manaIncreaseAmount;
+		if (Mana > 100) {
+			Mana = Mana - (Mana - 100);
+		}
     }
 
     // Use this for initialization
