@@ -18,13 +18,13 @@ public class Player : MonoBehaviour {
 	private PlayerStats playerStats;
 
 	//UI vars
-	public RawImage UI_img_fireball;
-	public RawImage UI_img_fireball_selected;
-	public RawImage UI_img_fireball_deactivated;
-	public RawImage UI_img_frostbolt;
-	public RawImage UI_img_frostbolt_selected;
-	public RawImage UI_img_frostbolt_deactivated;
-	public Text txt_notification_top;
+	private RawImage UI_img_fireball;
+	private RawImage UI_img_fireball_selected;
+	private RawImage UI_img_fireball_deactivated;
+	private RawImage UI_img_frostbolt;
+	private RawImage UI_img_frostbolt_selected;
+	private RawImage UI_img_frostbolt_deactivated;
+	private Text txt_notification_top;
 
 
 
@@ -32,7 +32,8 @@ public class Player : MonoBehaviour {
 	
     void Start() {
         //cc = GetComponent<CharacterController>();
-		playerStats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
+		playerStats = GameObject.Find ("Player(Clone)").GetComponent<PlayerStats> ();
+		updateTextReference ();
         playerLook = GetComponent<PlayerLook>();
         playerMove = GetComponent<PlayerMove>();
         interaction = GetComponentInChildren<Interaction>();
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour {
 		UI_img_frostbolt_selected.enabled = false;
 		UI_img_fireball.enabled = false;
 		UI_img_fireball_selected.enabled = false;
+
     }
 
     void Update() {
@@ -130,6 +132,16 @@ public class Player : MonoBehaviour {
 		txt_notification_top.text = "";
 	}
 
+	public void updateTextReference(){
+		UI_img_fireball= GameObject.Find ("img_fireball").GetComponent<RawImage>();
+		UI_img_fireball_selected= GameObject.Find ("img_fireball_selected").GetComponent<RawImage>();
+		UI_img_fireball_deactivated= GameObject.Find ("img_fireball_deactivated").GetComponent<RawImage>();
+		UI_img_frostbolt= GameObject.Find ("img_frostbolt").GetComponent<RawImage>();
+		UI_img_frostbolt_selected= GameObject.Find ("img_frostbolt_selected").GetComponent<RawImage>();
+		UI_img_frostbolt_deactivated= GameObject.Find ("img_frostbolt_deactivated").GetComponent<RawImage>();
+		txt_notification_top= GameObject.Find ("txt_notification_top").GetComponent<Text>();
+		
+	}
 
 
 

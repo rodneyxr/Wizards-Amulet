@@ -19,7 +19,7 @@ public class SpellTome :MonoBehaviour,IInteractable {
 
 	public void Interact(){
 		if (!hasInteracted) {
-			player = GameObject.Find ("Player").GetComponent<Player> ();
+			player = GameObject.Find ("Player(Clone)").GetComponent<Player> ();
 			//get spellbook game object then trigger boolean that enables firespell
 			if (spellname.Equals ("fireball"))
 				player.learnSpell("fireball");

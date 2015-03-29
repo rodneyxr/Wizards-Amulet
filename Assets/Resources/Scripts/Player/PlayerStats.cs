@@ -34,7 +34,6 @@ public class PlayerStats : Character {
 		syncUI ();
     }
 
-<<<<<<< HEAD
 	void regenMana(){
 		if (Mana < 100) {
 			manaRegenTimer += Time.deltaTime;
@@ -44,13 +43,14 @@ public class PlayerStats : Character {
 			}
 		}
 	}
+
 	void syncUI(){
 		PlayerHealthText.text = "Health : " + Health;
 		PlayerManaText.text = "Mana : " + Mana;
-=======
-	void updateTextReference(){
+	}
+	public void updateTextReference(){
 		PlayerHealthText = GameObject.Find ("Health").GetComponent<Text>();
 		PlayerManaText = GameObject.Find ("Mana").GetComponent<Text>();
->>>>>>> origin/SeanBranch
+
 	}
 }

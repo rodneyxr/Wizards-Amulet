@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         debugLight.SetActive(false); // Debug light
-        player.YourTurn();
 		setAllEnemies();
 		player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+		player.YourTurn();
     }
 
     void Update() {
@@ -26,18 +26,14 @@ public class GameManager : MonoBehaviour {
     }
 
     void NotifyAllEnemies() {
-<<<<<<< HEAD
-        foreach (Enemy e in enemies) {
-            e.StartTurn();
-=======
+
 		//if(enemies.Length > 0 && enemies[0] != null)
 		if (enemies == null) {
-						print ("enemies is null");
+			print ("enemies is null");
 			return;		
 		}
 		foreach (Enemy e in enemies) {
-            e.YourTurn();
->>>>>>> origin/SeanBranch
+            e.StartTurn();
         }
     }
 

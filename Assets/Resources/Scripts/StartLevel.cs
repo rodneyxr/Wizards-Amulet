@@ -39,7 +39,8 @@ public class StartLevel : MonoBehaviour {
 		                                        player.transform.position.y,
 		                                        startTile.transform.position.z);
 		player.transform.rotation = startTile.transform.rotation;
-		player.GetComponent<PlayerStats> ();
+		player.GetComponent<PlayerStats> ().updateTextReference();
+		player.GetComponent<Player> ().updateTextReference ();
 		gameObject.GetComponent<GameManager> ().setAllEnemies ();
 
 	}
