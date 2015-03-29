@@ -26,8 +26,10 @@ public class StartLevel : MonoBehaviour {
 		   tile = direction;
 
 		GameObject player = GameObject.Find ("Player(Clone)");
+		GameObject canvas = GameObject.Find ("Canvas(Clone)");
 		DontDestroyOnLoad(player);
 		DontDestroyOnLoad (gameObject);
+		DontDestroyOnLoad (canvas);
 		yield return new WaitForSeconds(0.3f);
 		Application.LoadLevel (level);
 

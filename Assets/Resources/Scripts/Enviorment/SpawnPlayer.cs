@@ -4,9 +4,13 @@ using System.Collections;
 public class SpawnPlayer : MonoBehaviour {
 	public GameObject player;
 	public GameObject main;
+	public GameObject canvas;
 
 	// Use this for initialization
 	void Start () {
+		if (GameObject.Find ("Canvas(Clone)") == null) {
+			StartCoroutine (canvasMaker());
+		}
 		if (GameObject.Find ("Player(Clone)") == null) {
 			StartCoroutine(spawn());
 		}
@@ -27,5 +31,9 @@ public class SpawnPlayer : MonoBehaviour {
 	IEnumerator mainMaker(){
 		yield return new WaitForSeconds (0.5f);
 		Instantiate(main, transform.position, transform.rotation);
+	}
+	IEnumerator canvasMaker(){
+		yield return new WaitForSeconds (0.5f);
+		Instantiate(canvas, transform.position, transform.rotation);
 	}
 }
