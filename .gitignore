@@ -15,3 +15,5 @@ thumbs.db
 *.suo
 *.exe
 33percent_Turn-in_Data/
+*.log
+.vs/

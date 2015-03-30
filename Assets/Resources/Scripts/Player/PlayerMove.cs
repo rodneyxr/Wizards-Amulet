@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour {
                 cc.transform.position = Vector3.Lerp(startPosition, endPosition, t); // smooth player move
                 yield return null;
             }
-            player.PlayerMoved();
+            player.EndTurn();
         }
 
         // finished moving

@@ -3,19 +3,12 @@ using System.Collections;
 
 public class TextFaceCamera : MonoBehaviour {
 
-    private Transform cameraToLookAt;
-
-    void Start() {
-      //  cameraToLookAt = Camera.main.transform;
-		cameraToLookAt = GameObject.Find ("Player(Clone)").GetComponentInChildren<Camera>().transform;
-    }
-
-    
     void Update() {
+        if (Camera.main == null) return;
         // Credits to Fabkins
-        Vector3 v = cameraToLookAt.transform.position - transform.position;
+        Vector3 v = Camera.main.transform.position - transform.position;
         v.x = v.z = 0.0f;
-        transform.LookAt(cameraToLookAt.transform.position - v);
+        transform.LookAt(Camera.main.transform.position - v);
         transform.Rotate(0, 180, 0);
     }
 }

@@ -11,46 +11,47 @@ public class PlayerStats : Character {
     public int playerAttackDamage;
 
     //UI Text variables
-    public Text PlayerHealthText;
-    public Text PlayerManaText;
+    public Text playerHealthText;
+    public Text playerManaText;
 
-	//Timer vars
-	private float manaRegenTimer;
+    //Timer vars
+    private float manaRegenTimer;
 
     // Use this for initialization
     void Start() {
         //Give character base stats via public variables
         Health = playerHealth;
         Mana = playerMana;
-		updateTextReference ();
+        updateTextReference();
         AttackDamage = playerAttackDamage;
         MoveSpeed = playerMoveSpeed;
-		manaRegenTimer = 0;
+        manaRegenTimer = 0;
     }
 
     // Update is called once per frame
     void Update() {
-		regenMana ();
-		syncUI ();
+        regenMana();
+        syncUI();
     }
 
-	void regenMana(){
-		if (Mana < 100) {
-			manaRegenTimer += Time.deltaTime;
-			if (manaRegenTimer >= 3) {
-					increaseMana (5);
-					manaRegenTimer = 0;
-			}
-		}
-	}
+    void regenMana() {
+        if (Mana < 100) {
+            manaRegenTimer += Time.deltaTime;
+            if (manaRegenTimer >= 3) {
+                increaseMana(5);
+                manaRegenTimer = 0;
+            }
+        }
+    }
 
-	void syncUI(){
-		PlayerHealthText.text = "Health : " + Health;
-		PlayerManaText.text = "Mana : " + Mana;
-	}
-	public void updateTextReference(){
-		PlayerHealthText = GameObject.Find ("Health").GetComponent<Text>();
-		PlayerManaText = GameObject.Find ("Mana").GetComponent<Text>();
+    void syncUI() {
+        playerHealthText.text = "Health : " + Health;
+        playerManaText.text = "Mana : " + Mana;
+    }
 
-	}
+    public void updateTextReference() {
+        playerHealthText = GameObject.Find("Health").GetComponent<Text>();
+        playerManaText = GameObject.Find("Mana").GetComponent<Text>();
+
+    }
 }

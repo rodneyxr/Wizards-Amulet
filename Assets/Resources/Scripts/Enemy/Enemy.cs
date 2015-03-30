@@ -31,7 +31,7 @@ public class Enemy : Character {
 
     void Update() {
         if (enemyTurn) {
-			print (state);
+            //print(state);
             switch (state) {
                 case State.Idle:
                     IdleState();
