@@ -8,8 +8,8 @@ public class Enemy : Character {
     public float rangeOfSight = 5f;
     public Animation animation;
     public TextMesh overhead;
-
-    private bool enemyTurn;
+	private Player player;
+	private bool enemyTurn;
     private CharacterMove characterMove;
     private Transform target;
     public enum State { Idle, Chase };
@@ -65,17 +65,34 @@ public class Enemy : Character {
     }
 
     private void CheckForTarget() {
-        Debug.DrawRay(transform.position, transform.forward * rangeOfSight, Color.red, 1);
-        RaycastHit hit;
-        Physics.Raycast(new Ray(), out hit, rangeOfSight);
+		print ("in check for target");
+		if(player == null)
+			player = GameObject.Find ("Player(Clone)").GetComponent<Player>();
+		if (Vector3.Distance (player.transform.position, transform.position) <= 7f) {
+			transform.LookAt (player.transform.position);
+			state = State.Chase;
+		} else {
+			state = State.Idle;
+		}
     }
 
     private void IdleState() {
+		print ("in idle state");
         characterMove.FaceRandom();
     }
 
-    private void ChaseState() {
+	private void AttackState(){
 
+	}
+    private void ChaseState() {
+		print (" in chase state");
+		if (Vector3.Distance (player.transform.position, transform.position) >  7f) {
+			//transform.LookAt (player.transform.position);
+			print ("walk?");
+			characterMove.Move(Direction.Forward);
+		}else if (Vector3.Distance (player.transform.position, transform.position) >  16f) {
+			state = State.Idle;
+		} 
     }
 
     private void EndTurn() {
@@ -84,7 +101,7 @@ public class Enemy : Character {
 
     public void StartTurn() {
         EnemyTurn = true;
-        if (!characterMove.IsMoving && !characterMove.IsTurning) {
+        if (!characterMove.IsMoving && !characterMove.IsTurning && state != State.Chase) {
             CheckForTarget();
         }
     }
