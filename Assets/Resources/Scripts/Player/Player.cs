@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 using System.Collections;
@@ -102,6 +102,10 @@ public class Player : MonoBehaviour {
             manaCost = 10;
             //UI_img_fireball.enabled = true;
         }
+    }
+
+    public PlayerLook Look {
+        get { return playerLook; }
     }
 
     public void learnSpell(string spellname) {

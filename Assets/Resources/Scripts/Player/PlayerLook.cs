@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerLook : MonoBehaviour {
@@ -50,6 +50,28 @@ public class PlayerLook : MonoBehaviour {
             facing = 3;
         else if (facing == 4)
             facing = 0;
+        destYaw = direction[facing];
+    }
+
+    public void SyncRotation(Quaternion rotation) {
+        float rot = rotation.eulerAngles.y;
+        //print(rot);
+        switch ((int)rot) {
+            case 0:
+                facing = 0;
+                break;
+            case 90:
+                facing = 1;
+                break;
+            case 180:
+                facing = 2;
+                break;
+            case 270:
+                facing = 3;
+                break;
+            default:
+                break;
+        }
         destYaw = direction[facing];
     }
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        //if (player == null) player = GameObject.Find("Player(Clone)").GetComponent<Player>();
         if (!player.PlayerTurn) {
             NotifyAllEnemies();
             player.StartTurn();
