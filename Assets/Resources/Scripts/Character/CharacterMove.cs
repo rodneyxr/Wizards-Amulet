@@ -73,7 +73,6 @@ public class CharacterMove : MonoBehaviour {
 		default:
 			break;
 		}
-		print (cc.transform.rotation.eulerAngles.y);
         input = new Vector2();
         switch (direction) {
             case Direction.Forward:

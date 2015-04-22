@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
         }
 
         if (learnFireBall || learnIceBlitz)
-            if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning) {
+            if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning && playerTurn) {
                 if (playerStats.Mana >= manaCost) {
                     playerStats.decreaseMana(manaCost);
                     SpellCaster.castSpell(selectedSpell, playerLook.PlayerCamera.transform.position, Quaternion.Euler(0f, playerLook.Yaw, 0f));
