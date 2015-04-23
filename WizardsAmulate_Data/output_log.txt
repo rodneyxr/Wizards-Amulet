@@ -14,7 +14,7 @@ Platform assembly: C:\Users\matthew\Documents\_This Semester\CS4593\group-projec
 Loading C:\Users\matthew\Documents\_This Semester\CS4593\group-project\WizardsAmulate_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\matthew\Documents\_This Semester\CS4593\group-project\WizardsAmulate_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\matthew\Documents\_This Semester\CS4593\group-project\WizardsAmulate_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.116 seconds
+- Completed reload, in  0.111 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
@@ -23,10 +23,10 @@ XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 Platform assembly: C:\Users\matthew\Documents\_This Semester\CS4593\group-project\WizardsAmulate_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\matthew\Documents\_This Semester\CS4593\group-project\WizardsAmulate_Data\Managed\System.dll (this message is harmless)
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 11.324885 ms
+UnloadTime: 37.176880 ms
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1925.
-Total: 1.276142 ms (FindLiveObjects: 0.284870 ms CreateObjectMapping: 0.082124 ms MarkObjects: 0.880917 ms  DeleteObjects: 0.026947 ms)
+Total: 3.802764 ms (FindLiveObjects: 0.622993 ms CreateObjectMapping: 0.083408 ms MarkObjects: 3.064924 ms  DeleteObjects: 0.029513 ms)
 
 Goblin Killed.
  
@@ -6197,11 +6197,38 @@ NullReferenceException
  
 (Filename:  Line: -1)
 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at Enemy.CheckForTarget () [0x00000] in <filename unknown>:0 
+  at Enemy.StartTurn () [0x00000] in <filename unknown>:0 
+  at GameManager.NotifyAllEnemies () [0x00000] in <filename unknown>:0 
+  at GameManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at Enemy.CheckForTarget () [0x00000] in <filename unknown>:0 
+  at Enemy.StartTurn () [0x00000] in <filename unknown>:0 
+  at GameManager.NotifyAllEnemies () [0x00000] in <filename unknown>:0 
+  at GameManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.056073 ms
+UnloadTime: 1.021427 ms
 
 Unloading 63 unused Assets to reduce memory usage. Loaded Objects now: 1559.
-Total: 1.485946 ms (FindLiveObjects: 0.229692 ms CreateObjectMapping: 0.122545 ms MarkObjects: 0.993838 ms  DeleteObjects: 0.137944 ms)
+Total: 1.437826 ms (FindLiveObjects: 0.230976 ms CreateObjectMapping: 0.115488 ms MarkObjects: 0.959833 ms  DeleteObjects: 0.130244 ms)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at Enemy.CheckForTarget () [0x00000] in <filename unknown>:0 
+  at Enemy.StartTurn () [0x00000] in <filename unknown>:0 
+  at GameManager.NotifyAllEnemies () [0x00000] in <filename unknown>:0 
+  at GameManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
@@ -6483,8 +6510,8 @@ NullReferenceException
 (Filename:  Line: -1)
 
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.321696 ms
+UnloadTime: 1.346718 ms
 
 Unloading 128 unused Assets to reduce memory usage. Loaded Objects now: 359.
-Total: 0.898240 ms (FindLiveObjects: 0.091748 ms CreateObjectMapping: 0.044912 ms MarkObjects: 0.402924 ms  DeleteObjects: 0.356729 ms)
+Total: 0.864235 ms (FindLiveObjects: 0.093673 ms CreateObjectMapping: 0.045553 ms MarkObjects: 0.404849 ms  DeleteObjects: 0.318875 ms)
 
