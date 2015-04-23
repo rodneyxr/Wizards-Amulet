@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 using System.Collections;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
         }
 
         if (learnFireBall || learnIceBlitz)
-            if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning) {
+            if (Input.GetButtonDown("Fire1") && !playerMove.IsMoving && !playerLook.IsTurning && playerTurn) {
                 if (playerStats.Mana >= manaCost) {
                     playerStats.decreaseMana(manaCost);
                     SpellCaster.castSpell(selectedSpell, playerLook.PlayerCamera.transform.position, Quaternion.Euler(0f, playerLook.Yaw, 0f));
@@ -102,6 +102,10 @@ public class Player : MonoBehaviour {
             manaCost = 10;
             //UI_img_fireball.enabled = true;
         }
+    }
+
+    public PlayerLook Look {
+        get { return playerLook; }
     }
 
     public void learnSpell(string spellname) {

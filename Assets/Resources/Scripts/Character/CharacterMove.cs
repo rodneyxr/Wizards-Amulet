@@ -58,6 +58,21 @@ public class CharacterMove : MonoBehaviour {
     //}
 
     public void Move(Direction direction) {
+		switch ((int)cc.transform.rotation.eulerAngles.y) {
+		case 0:
+			break;
+		case 90:
+			direction = Direction.Right;
+			break;
+		case 180:
+			direction = Direction.Back;
+			break;
+		case 270:
+			direction = Direction.Left;
+			break;
+		default:
+			break;
+		}
         input = new Vector2();
         switch (direction) {
             case Direction.Forward:
@@ -78,10 +93,11 @@ public class CharacterMove : MonoBehaviour {
 
     private void Move() {
         if (!isMoving) {
-            StartCoroutine(move(cc.transform));
+			StartCoroutine(move(cc.transform));
         }
         lastAction = Action.Move;
     }
+
 
     private IEnumerator move(Transform transform) {
         // don't allow any more movement until finished with current move
@@ -104,9 +120,10 @@ public class CharacterMove : MonoBehaviour {
         Vector3 moveDirection = (endPosition - startPosition).normalized;
         Debug.DrawRay(startPosition, moveDirection, Color.red, 1);
         if (Physics.Raycast(startPosition, moveDirection, out hit, GameManager.TileSize + (GameManager.TileSize / 2 - .01f))) {
-            //if (hit.collider.tag == "Enemy" || hit.collider.tag == "NonWalkable") {
-            canMove = false;
-            //}
+         //   if (hit.collider.name != "outerbox" ) {
+				print (hit.collider.name);
+				canMove = false;
+           // }
 
         }
 

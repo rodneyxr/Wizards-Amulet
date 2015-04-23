@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class StartLevel : MonoBehaviour {
@@ -29,7 +29,10 @@ public class StartLevel : MonoBehaviour {
         GameObject startTile = GameObject.Find(tile);
         if (startTile != null) {
             player.transform.position = new Vector3(startTile.transform.position.x, player.transform.position.y, startTile.transform.position.z);
+            // reset player rotation
             player.transform.rotation = startTile.transform.rotation;
+            Player p = player.GetComponent<Player>();
+            p.Look.SyncRotation(p.transform.rotation);
             player.GetComponent<PlayerStats>().updateTextReference();
             player.GetComponent<Player>().updateTextReference();
             gameObject.GetComponent<GameManager>().setAllEnemies();
