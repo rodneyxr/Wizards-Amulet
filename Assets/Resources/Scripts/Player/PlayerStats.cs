@@ -13,7 +13,7 @@ public class PlayerStats : Character {
     //UI Text variables
     public Text playerHealthText;
     public Text playerManaText;
-
+	private bool isDead;
     //Timer vars
     private float manaRegenTimer;
 
@@ -26,12 +26,19 @@ public class PlayerStats : Character {
         AttackDamage = playerAttackDamage;
         MoveSpeed = playerMoveSpeed;
         manaRegenTimer = 0;
-    }
+		isDead = false;
+	}
 
     // Update is called once per frame
     void Update() {
-        regenMana();
-        syncUI();
+		if (Health <= 0)
+			isDead = true;
+		if (!isDead) {
+			regenMana ();
+			syncUI ();
+		} else {
+			death();
+		}
     }
 
     void regenMana() {
@@ -44,11 +51,19 @@ public class PlayerStats : Character {
         }
     }
 
+	public void gainHealth(int hp){
+		Health += hp;
+		if (Health > 100)
+			Health = 100;
+	}
+
     void syncUI() {
         playerHealthText.text = "Health : " + Health;
         playerManaText.text = "Mana : " + Mana;
     }
-
+	private void death(){
+		Application.LoadLevel (3);
+	}
     public void updateTextReference() {
         playerHealthText = GameObject.Find("Health").GetComponent<Text>();
         playerManaText = GameObject.Find("Mana").GetComponent<Text>();

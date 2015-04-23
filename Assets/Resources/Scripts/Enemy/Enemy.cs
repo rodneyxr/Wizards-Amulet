@@ -101,7 +101,7 @@ public class Enemy : Character {
         print("attack");
         //animation.Play("attack1");
         StartCoroutine(PlayAnimOnce("attack1"));
-        playerStats.decreaseHealth(3);
+        playerStats.decreaseHealth(5);
     }
     private void ChaseState() {
         float distance = Vector3.Distance(player.transform.position, transform.position);
