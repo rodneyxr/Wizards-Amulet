@@ -1,0 +1,164 @@
+<sensor>
+	<tracker>Microsoft</tracker>
+	<mode>Full Body</mode>
+	<mirrormode>true</mirrormode>
+	<smoothing>true</smoothing>
+	<smoothingfactor>0.5</smoothingfactor>
+	<correction>0.5</correction>
+	<prediction>0.5</prediction>
+	<jitter>0.05</jitter>
+	<deviation>0.04</deviation>
+</sensor>
+<server>
+	<transformations>Global coordinates</transformations>
+	<automaticassignment>true</automaticassignment>
+</server>
+<display>
+	<showviewerwindow>true</showviewerwindow>
+	<background>Depth</background>
+	<foreground>Depth</foreground>
+	<showconsolewindow>true</showconsolewindow>
+	<movechildwindows>true</movechildwindows>
+	<savewindowlayout>false</savewindowlayout>
+</display>
+<gestures>
+	<gesture name="W" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="0">
+			<descriptor>lean</descriptor>
+			<descriptor>forward</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>20</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>w</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="Q" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="0">
+			<descriptor>turn</descriptor>
+			<descriptor>left</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>20</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>q</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="E" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="0">
+			<descriptor>turn</descriptor>
+			<descriptor>right</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>20</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>e</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="LeftMouse" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="1">
+			<descriptor>right hand</descriptor>
+			<descriptor>in front of</descriptor>
+			<descriptor>torso</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>24</descriptor>
+			<descriptor>inches</descriptor>
+		</input>
+		<output type="2">
+			<descriptor>press</descriptor>
+			<descriptor>left button</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="F" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="1">
+			<descriptor>left hand</descriptor>
+			<descriptor>in front of</descriptor>
+			<descriptor>torso</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>24</descriptor>
+			<descriptor>inches</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>f</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="One" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="1">
+			<descriptor>right hand</descriptor>
+			<descriptor>to the left of</descriptor>
+			<descriptor>left shoulder</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>1</descriptor>
+			<descriptor>inches</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>1</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="Two" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="1">
+			<descriptor>left hand</descriptor>
+			<descriptor>to the right of</descriptor>
+			<descriptor>right shoulder</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>1</descriptor>
+			<descriptor>inches</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>2</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="S-right" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="2">
+			<descriptor>right leg</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>45</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>s</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+	<gesture name="S-left" timeout="0" enabled="true" outputloop="false" outputtimeout="0">
+		<input type="2">
+			<descriptor>left leg</descriptor>
+			<descriptor>at least</descriptor>
+			<descriptor>45</descriptor>
+			<descriptor>degrees</descriptor>
+		</input>
+		<output type="0">
+			<descriptor>press</descriptor>
+			<descriptor>s</descriptor>
+			<descriptor>for</descriptor>
+			<descriptor>0</descriptor>
+		</output>
+	</gesture>
+</gestures>
+<plugins/>
+

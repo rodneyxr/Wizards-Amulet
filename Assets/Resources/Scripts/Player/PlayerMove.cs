@@ -20,11 +20,13 @@ public class PlayerMove : MonoBehaviour {
     private bool isMoving = false; // true if the player is currently moving
     private Vector3 startPosition; // position at start of a move
     private Vector3 endPosition; // destination position
+	AudioSource walkAudio; //sound to play when player moves
 
     public void Start() {
         cc = GetComponent<CharacterController>(); // grab the character controller
         playerLook = GetComponentInChildren<PlayerLook>();
         player = GetComponentInChildren<Player>();
+		walkAudio = GetComponent<AudioSource>();
     }
 
     public void Update() {
@@ -43,7 +45,11 @@ public class PlayerMove : MonoBehaviour {
             if (input != Vector2.zero && !isMoving) {
                 StartCoroutine(move(cc.transform));
             }
+
+
+			//walkAudio.Play(44100);
         }
+		//walkAudio.Stop();
     }
 
     public IEnumerator move(Transform transform) {
@@ -75,6 +81,7 @@ public class PlayerMove : MonoBehaviour {
 
         // smoothly move to new position
         if (canMove) {
+			walkAudio.Play();
             float t = 0f; // lerp speed
             while (t < 1f) {
                 t += Time.deltaTime * (moveSpeed / GameManager.TileSize); // calculate the time for lerp
