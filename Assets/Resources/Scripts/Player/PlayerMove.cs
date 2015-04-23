@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour {
 
         // smoothly move to new position
         if (canMove) {
-			walkAudio.Play();
+//			walkAudio.Play();
             float t = 0f; // lerp speed
             while (t < 1f) {
                 t += Time.deltaTime * (moveSpeed / GameManager.TileSize); // calculate the time for lerp
